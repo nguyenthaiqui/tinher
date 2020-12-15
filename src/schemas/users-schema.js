@@ -14,3 +14,9 @@ exports.loginSchema = Joi.object({
     .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).required(),
   password: Joi.string().min(3).required()
 })
+
+exports.updateProfileSchema = Joi.object({
+  firstName: Joi.string(),
+  lastName: Joi.string(),
+  gender: Joi.valid('Male', 'Female', 'Other').required()
+})
