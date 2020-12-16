@@ -8,6 +8,9 @@ const UserSchema = Schema({
   email: { type: String, required: true, unique: true },
   gender: { type: String, required: true },
   password: { type: String, required: true },
+  selfDescribe: {type: String},
+  dateOfBirth: {type: Schema.Types.Date, required: true},
+  images: {type: Schema.Types.Array},
   created_at: { type: Date, default: Date.now() },
   updated_at: { type: Date, default: Date.now() }
 });
