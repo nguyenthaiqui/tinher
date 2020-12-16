@@ -20,16 +20,16 @@ exports.loginSchema = Joi.object({
 exports.updateProfileSchema = Joi.object({
   firstName: Joi.string(),
   lastName: Joi.string(),
+  gender: Joi.valid('Male', 'Female', 'Other').required(),
   dateOfBirth: Joi.date(),
   selfDescribe: Joi.string(),
-  gender: Joi.valid('Male', 'Female', 'Other').required()
 })
 
 exports.updatePhotoSchema = Joi.object({
   firstName: Joi.string(),
   lastName: Joi.string(),
+  gender: Joi.valid('Male', 'Female', 'Other').required(),
   dateOfBirth: Joi.date(),
   selfDescribe: Joi.string(),
-  gender: Joi.valid('Male', 'Female', 'Other').required(),
   images: Joi.array().items(Joi.binary())
 })

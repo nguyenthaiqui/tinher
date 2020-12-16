@@ -43,8 +43,10 @@ exports.login = (req, res, next) => {
     return res.status(200).send({
       statusCode: 200,
       message: messages.LOGIN_SUCCESS,
-      data: result.user,
-      token: result.token
+      data: {
+        token: result.token,
+        publicUser: result.user,
+      }
     })
   })
 }
