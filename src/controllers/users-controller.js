@@ -78,3 +78,8 @@ exports.update = async (req, res, next) => {
     message: "Unathorization"
   })
 }
+
+exports.updatePhoto = async (req, res, next) => {
+  console.log(req.files)
+  return res.send(req.file)
+}

@@ -10,7 +10,7 @@ cloudinary.config({
   api_secret: 'mnFdyV_JAoY8b-xFmjuVcHz2NWw'
 })
 
-const streamUpload = (req) => {
+const streamUpload = (file) => {
   return new Promise((resolve, reject) => {
     const stream = cloudinary.uploader.upload_stream(
       (error, result) => {
@@ -21,12 +21,12 @@ const streamUpload = (req) => {
       }
     )
 
-    streamifier.createReadStream(req.file.buffer).pipe(stream)
+    streamifier.createReadStream(file.buffer).pipe(stream)
   })
 }
 
 exports.upload = async (req, res) => {
-  const result = await streamUpload(req)
+  const result = await streamUpload(req.file)
   return res.status(200).json({
     originalSize: {
       width: result.width,
@@ -34,4 +34,14 @@ exports.upload = async (req, res) => {
     },
     url: result.url,
   });
+}
+
+exports.bulkUpload = async (req, res) => {
+  const promises = req.files.map( async file => {
+    return await streamUpload(file)   
+  })
+
+  let result = await Promise.all(promises)
+  
+  return res.send(result)
 }

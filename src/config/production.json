@@ -1,0 +1,9 @@
+{
+  "database":{
+    "URI":"mongodb+srv://will:will123@etravel.qroq6.mongodb.net/tinher?retryWrites=true&w=majority",
+    "DB_HOST": "etravel.qroq6.mongodb.net",
+    "DB_DATABASE": "tinher",
+    "DB_USERNAME": "will",
+    "DB_PASSWORD": "will123"
+  }
+}

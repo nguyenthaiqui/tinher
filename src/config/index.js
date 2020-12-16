@@ -1,6 +1,16 @@
 const convict = require('convict')
 
 const config = convict({
+
+  env: {
+    doc: 'Application environment',
+    env: 'NODE_ENV',
+    format: ['production', 'development', 'staging'],
+    // Defaulting to production might prevent the leaking of debug information when
+    // it's not set properly.
+    default: 'production'
+  },
+
   server: {
     port: 3003
   },
@@ -9,5 +19,9 @@ const config = convict({
     secret: 'Willne123'
   }
 })
+
+const env = config.get('env')
+
+config.loadFile(require('path').resolve(`src/config/${env}.json`))
 
 module.exports = config

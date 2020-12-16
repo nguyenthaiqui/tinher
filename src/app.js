@@ -5,6 +5,7 @@ const cors = require('cors')
 const helmet = require('helmet')
 const mongoose = require('mongoose')
 const app = express()
+const config = require('./config')
 
 app.use(logger('dev'))
 
@@ -17,7 +18,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use('/', require('./routes'))
 
-mongoose.connect('mongodb://localhost:27017/tinher', {
+
+mongoose.connect(config.get('database.URI'), {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
