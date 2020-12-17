@@ -1,6 +1,6 @@
 const _ = require('lodash')
 const User = require('../models/user')
-const { publicUser } = require('../contrants/publicData')
+const { publicUser } = require('../constants/publicData')
 
 exports.read = async id => {
   const user = await User.findById(id)

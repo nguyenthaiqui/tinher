@@ -22,4 +22,4 @@ Also, be sure to have `git` available in your PATH, `npm` might need it (You can
 
 ## Running the project
 
-    $ npm run prod
+    $ npm start

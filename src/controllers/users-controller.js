@@ -1,7 +1,7 @@
 const _ = require('lodash')
 const authService = require('../services/authentication-service')
 const userService = require('../services/users-service')
-const { messages } = require('../contrants/message')
+const { messages } = require('../constants/message')
 const { decodeToken } = require('../middleware/Token')
 
 

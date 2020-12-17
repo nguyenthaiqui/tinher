@@ -2,7 +2,7 @@ const path = require('path')
 const _ = require('lodash')
 const cloudinary = require('cloudinary').v2
 const streamifier = require('streamifier')
-// const Resize = require('./resize')
+const { publicData, publicImage } = require('../constants/publicData')
 
 cloudinary.config({
   cloud_name: 'willnguyen',
@@ -37,11 +37,15 @@ exports.upload = async (req, res) => {
 }
 
 exports.bulkUpload = async (req, res) => {
-  const promises = req.files.map( async file => {
-    return await streamUpload(file)   
+  const promises = req.files.map(async file => {
+    return await streamUpload(file)
   })
 
-  let result = await Promise.all(promises)
-  
+  const responses = await Promise.all(promises)
+
+  let result = []
+  responses.map(item => {
+    result.push(_.pick(item, _.keys(publicImage)))
+  })
   return res.send(result)
 }

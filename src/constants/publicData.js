@@ -9,5 +9,14 @@ module.exports = Object.freeze({
     email: null,
     selfDescribe: null,
     images: [],
+  },
+  publicImage: {
+    public_id: null,
+    width: null,
+    height: null,
+    format: null,
+    created_at: null,
+    version: null,
+    url: null,
   }
 })

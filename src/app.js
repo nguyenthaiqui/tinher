@@ -18,7 +18,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use('/', require('./routes'))
 
-
 mongoose.connect(config.get('database.URI'), {
   useNewUrlParser: true,
   useUnifiedTopology: true,
