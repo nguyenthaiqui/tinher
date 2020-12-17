@@ -4,6 +4,7 @@ const User = require('../models/user')
 const config = require('../config/index')
 const Token = require('../middleware/Token')
 const utils = require('../utils')
+const { messages } = require('../constants/message')
 
 exports.hashedPassword = password => bcrypt.hashSync(password, config.get('saltRounds'))
 
@@ -18,13 +19,18 @@ exports.register = async data => {
 
 exports.login = async data => {
   const user = await User.findOne({ email: data.email })
+  if (user === null) return {
+    user: null,
+  }
   if (this.comparePassword(data.password, user.password)) {
     const token = Token.createLoginToken(user)
-    
+
     return {
       user: utils.toPublicUser(user),
       token
     }
   }
-  return null
+  return {
+    user: null,
+  }
 }
