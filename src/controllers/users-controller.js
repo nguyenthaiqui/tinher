@@ -1,6 +1,7 @@
 const _ = require('lodash')
 const authService = require('../services/authentication-service')
 const userService = require('../services/users-service')
+const imageService = require('../services/image-service')
 const { messages } = require('../constants/message')
 const { decodeToken } = require('../middleware/Token')
 
@@ -81,7 +82,14 @@ exports.update = async (req, res, next) => {
   })
 }
 
-exports.updatePhoto = async (req, res, next) => {
-  console.log(req.files)
-  return res.send(req.file)
+exports.updatePhotos = async (req, res, next) => {
+  const result = await imageService.bulkUpload(req.files)
+  // const images = result.map(image => {
+    
+  // })
+
+  return res.status(200).json({
+    statusCode: 200,
+    data: result
+  })
 }

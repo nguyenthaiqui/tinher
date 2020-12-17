@@ -11,7 +11,11 @@ router.route('/:id')
   .patch(verifyToken,
     validateMiddleware(schemas.updateProfileSchema, 'body'),
     userController.update)
-  .put(verifyToken, uploadModdileware.array('images'),  userController.updatePhoto)
+  .put(verifyToken,
+    uploadModdileware.array('images'),
+    validateMiddleware(schemas.updateProfileSchema, 'body'),
+    validateMiddleware(schemas.updatePhotoSchema, 'files'),
+    userController.updatePhotos)
 
 // router.route('/:id')
 //   .delete(personController.delete)

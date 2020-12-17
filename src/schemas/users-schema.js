@@ -25,11 +25,3 @@ exports.updateProfileSchema = Joi.object({
   selfDescribe: Joi.string(),
 })
 
-exports.updatePhotoSchema = Joi.object({
-  firstName: Joi.string(),
-  lastName: Joi.string(),
-  gender: Joi.valid('Male', 'Female', 'Other').required(),
-  dateOfBirth: Joi.date(),
-  selfDescribe: Joi.string(),
-  images: Joi.array().items(Joi.binary())
-})

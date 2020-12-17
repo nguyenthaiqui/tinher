@@ -17,7 +17,13 @@ const config = convict({
   saltRounds: 10,
   jwt: {
     secret: 'Willne123'
-  }
+  },
+
+  cloudinary: {
+    cloud_name: 'willnguyen',
+    api_key: '245577489324558',
+    api_secret: 'mnFdyV_JAoY8b-xFmjuVcHz2NWw'
+  },
 })
 
 const env = config.get('env')

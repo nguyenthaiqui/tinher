@@ -15,7 +15,6 @@ module.exports = Object.freeze({
     width: null,
     height: null,
     format: null,
-    created_at: null,
     version: null,
     url: null,
   }
