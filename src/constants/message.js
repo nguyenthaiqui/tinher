@@ -1,4 +1,8 @@
 module.exports = Object.freeze({
+  schemaMessages: {
+    WRONG_FORMAT_EMAIL: `Email must have '@' and ['.com','.net'] Example: exmaple@gmail.com`,
+    WRONG_FORMAT_DOB: `dateOfBirth format must be ISO 8601`
+  },
   messages: {
     REGISTER_SUCCESS: "Register successful",
     BAD_CREDENTIALS:"Bad Credentials",

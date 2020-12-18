@@ -11,7 +11,10 @@ const validateMiddleware = (schema, property) => {
 
       const message = details.map(i => i.message).join(',');
       res.status(422).send({
+        statusCode: 422,
+        message: "Invalid request data",
         errorMessage: message,
+        data: ""
       });
     }
   }
