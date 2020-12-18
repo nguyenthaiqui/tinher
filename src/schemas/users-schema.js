@@ -3,12 +3,12 @@ const Joi = require('joi')
 exports.registerSchema = Joi.object({
   email: Joi.string()
     .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).required(),
-  firstName: Joi.string(),
-  lastName: Joi.string(),
+  firstName: Joi.string().optional(),
+  lastName: Joi.string().optional(),
   password: Joi.string().min(3).required(),
   gender: Joi.valid('Male', 'Female', 'Other').required(),
   dateOfBirth: Joi.date().required(),
-  selfDescribe: Joi.string()
+  selfDescribe: Joi.string().optional()
 })
 
 exports.loginSchema = Joi.object({
@@ -18,10 +18,10 @@ exports.loginSchema = Joi.object({
 })
 
 exports.updateProfileSchema = Joi.object({
-  firstName: Joi.string(),
-  lastName: Joi.string(),
+  firstName: Joi.string().optional(),
+  lastName: Joi.string().optional(),
   gender: Joi.valid('Male', 'Female', 'Other').required(),
-  dateOfBirth: Joi.date(),
-  selfDescribe: Joi.string(),
+  dateOfBirth: Joi.date().required(),
+  selfDescribe: Joi.string().optional(),
 })
 
