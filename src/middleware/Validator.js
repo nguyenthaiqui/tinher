@@ -14,7 +14,7 @@ const validateMiddleware = (schema, property) => {
         statusCode: 422,
         message: "Invalid request data",
         errorMessage: message,
-        data: ""
+        data: {}
       });
     }
   }
