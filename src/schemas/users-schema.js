@@ -12,7 +12,7 @@ exports.registerSchema = Joi.object({
   password: Joi.string().min(3).required(),
   gender: Joi.valid('Male', 'Female', 'Other').required(),
   dateOfBirth: Joi.date().required().messages({
-    // 'date': schemaMessages.WRONG_FORMAT_DOB
+    'date': schemaMessages.WRONG_FORMAT_DOB
   }),
   selfDescribe: Joi.string().optional()
 })
@@ -32,5 +32,6 @@ exports.updateProfileSchema = Joi.object({
   gender: Joi.valid('Male', 'Female', 'Other').required(),
   dateOfBirth: Joi.date().required(),
   selfDescribe: Joi.string().optional(),
+  images: Joi.array().items(Joi.string()).optional()
 })
 

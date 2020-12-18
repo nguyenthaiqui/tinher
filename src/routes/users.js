@@ -7,15 +7,10 @@ const uploadModdileware = require('../middleware/UploadImage')
 const validateMiddleware = require('../middleware/Validator')
 
 router.route('/:id')
-  .get(verifyToken, userController.read)
-  .patch(verifyToken,
+  .get(userController.read)
+  .put(verifyToken,
     validateMiddleware(schemas.updateProfileSchema, 'body'),
     userController.update)
-  .put(verifyToken,
-    uploadModdileware.array('images'),
-    validateMiddleware(schemas.updateProfileSchema, 'body'),
-    validateMiddleware(schemas.updatePhotoSchema, 'files'),
-    userController.updatePhotos)
 
 // router.route('/:id')
 //   .delete(personController.delete)

@@ -12,11 +12,15 @@ exports.read = async id => {
 exports.update = async (id, data) => {
   const user = await User.findById(id)
   if (user) {
-    user.firstName = data.firstName,
-      user.lastName = data.lastName,
-      user.gender = data.gender
-      user.updated_at = Date.now()
+    user.firstName = data.firstName
+    user.lastName = data.lastName
+    user.gender = data.gender
+    user.selfDescribe = data.selfDescribe
+    user.dateOfBirth = data.dateOfBirth
+    user.updated_at = Date.now()
+    user.images = data.images
   }
+  else return null
   const result = await user.save()
   const userPublic = _.pick(result, _.keys(publicUser))
   userPublic.fullName = userPublic.lastName + ' ' + userPublic.firstName

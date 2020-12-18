@@ -11,5 +11,7 @@ module.exports = Object.freeze({
     GET_USER_SUCCESS: "Get profile success",
     USER_NOT_FOUND: "User has not found",
     UPLOAD_IMAGE_SUCCESS: "Upload image successful",
+    UPDATE_PROFILE_SUCCESS: "Update profile successful",
+    UNAUTHORIZED: "Unauthorized"
   }
 })

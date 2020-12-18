@@ -3,7 +3,7 @@ const authService = require('../services/authentication-service')
 const userService = require('../services/users-service')
 const imageService = require('../services/image-service')
 const { messages } = require('../constants/message')
-const { decodeToken } = require('../middleware/Token')
+const utils = require('../utils')
 
 
 exports.register = (req, res, next) => {
@@ -71,25 +71,16 @@ exports.update = async (req, res, next) => {
   const { id } = _.get(req, 'params', {})
   const data = _.get(req, 'body', {})
   const { authorization } = _.get(req, 'headers', {})
-  const user = decodeToken(authorization.split(' ')[1])
-  if (user._id === id) {
+  if (utils.verifyToken(authorization, id)) {
     const result = await userService.update(id, data)
-    return res.send(result)
+    return res.status(200).json({
+      statusCode: 200,
+      message: messages.UPDATE_PROFILE_SUCCESS,
+      data: result
+    })
   }
   else res.status(401).json({
     statusCode: 401,
-    message: "Unathorization"
-  })
-}
-
-exports.updatePhotos = async (req, res, next) => {
-  const result = await imageService.bulkUpload(req.files)
-  // const images = result.map(image => {
-    
-  // })
-
-  return res.status(200).json({
-    statusCode: 200,
-    data: result
+    message: messages.UNAUTHORIZED
   })
 }
