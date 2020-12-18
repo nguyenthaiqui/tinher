@@ -11,8 +11,8 @@ exports.registerSchema = Joi.object({
   lastName: Joi.string().optional(),
   password: Joi.string().min(3).required(),
   gender: Joi.valid('Male', 'Female', 'Other').required(),
-  dateOfBirth: Joi.date().iso().required().messages({
-    'date': schemaMessages.WRONG_FORMAT_DOB
+  dateOfBirth: Joi.date().required().messages({
+    // 'date': schemaMessages.WRONG_FORMAT_DOB
   }),
   selfDescribe: Joi.string().optional()
 })
