@@ -29,7 +29,7 @@ const onListening = () => {
   debug('Listening on ' + bind)
 };
 
-const port = config.get('server.port') || 3003
+const port = process.env.PORT || 3003
 app.set('port', port)
 const server = http.createServer(app)
 server.on('error', onError)
