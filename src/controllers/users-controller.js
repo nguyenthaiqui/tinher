@@ -53,8 +53,8 @@ exports.login = (req, res, next) => {
 }
 
 exports.read = async (req, res, next) => {
-  const { id } = _.get(req, 'params', {})
-  const user = await userService.read(id)
+  const { _id } = _.get(req, 'user', {})
+  const user = await userService.read(_id)
   if (!_.isEmpty(user))
     return res.status(200).send({
       statusCode: 200,
