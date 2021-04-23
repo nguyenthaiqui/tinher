@@ -6,7 +6,7 @@ const { verifyToken } = require('../middleware/Token')
 const uploadModdileware = require('../middleware/UploadImage')
 const validateMiddleware = require('../middleware/Validator')
 
-router.route('/profiles')
+router.route('/profile')
   .get(verifyToken, userController.read)
   .put(verifyToken,
     validateMiddleware(schemas.updateProfileSchema, 'body'),
